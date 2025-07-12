@@ -2,12 +2,14 @@ const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
+const path = require("path");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use("/profilePics", express.static("profilePics"));
+app.use(express.static(path.join(__dirname, "./client/build")));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -23,6 +25,10 @@ const upload = multer({ storage: storage });
 
 app.listen(4444, () => {
   console.log("Listening to the Port Number 4444");
+});
+
+app.get("*", (req, res) => {
+  res.sendFile("./client/build/index.html");
 });
 
 app.post("/login", upload.none(), async (req, res) => {
