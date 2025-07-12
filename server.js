@@ -27,10 +27,6 @@ app.listen(4444, () => {
   console.log("Listening to the Port Number 4444");
 });
 
-app.get("*", (req, res) => {
-  res.sendFile("./client/build/index.html");
-});
-
 app.post("/login", upload.none(), async (req, res) => {
   console.log(req.body);
   let userArray = await user.find().and([{ email: req.body.email }]);
@@ -80,6 +76,10 @@ app.post("/signup", upload.single("profilePic"), async (req, res) => {
     console.log("Unable to Inser the data into MDB");
     res.json({ status: "Failure", message: "Unable to create an account" });
   }
+});
+
+app.get("*", (req, res) => {
+  res.sendFile("./client/build/index.html");
 });
 
 let userSchema = new mongoose.Schema({
