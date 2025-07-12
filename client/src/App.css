@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+form {
+  display: inline-block;
+  background-color: aqua;
+}
+form label {
+  display: inline-block;
+  width: 120px;
+}
+form div {
+  margin: 10px;
+}
+.profilePic {
+  width: 150px;
+  height: 150px;
+  border: 2px solid pink;
+}
+nav {
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: tomato;
+}
+h1 {
+  color: red;
+}
+button {
+  background-color: blue;
+  color: white;
+}
