@@ -78,8 +78,12 @@ app.post("/signup", upload.single("profilePic"), async (req, res) => {
   }
 });
 
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
+
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 let userSchema = new mongoose.Schema({
